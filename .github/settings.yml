@@ -1,0 +1,6 @@
+_extends: .github
+repository:
+  name: config-file
+  description: form8ion utility for managing RC files
+  homepage: https://npm.im/@form8ion/config-file
+  private: false
