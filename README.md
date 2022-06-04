@@ -37,7 +37,19 @@ $ npm install @form8ion/config-file --save-prod
 ### Example
 
 ```javascript
-import configFile from '@form8ion/config-file';
+import {fileTypes} from '@form8ion/core';
+import {write} from '@form8ion/config-file';
+```
+
+```javascript
+(async () => {
+  await write({
+    format: fileTypes.JSON,
+    name: 'tool-name',
+    path: process.cwd(),
+    config: {foo: 'bar', baz: 'qux'}
+  });
+})();
 ```
 
 ## Contributing
