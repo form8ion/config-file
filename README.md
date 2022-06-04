@@ -14,6 +14,12 @@ form8ion utility for managing RC files
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
+  * [API](#api)
+    * [`write`](#write)
+      * [`format` __string__ (_required_)](#format-string-required)
+      * [`name` __string__ (_required_)](#name-string-required)
+      * [`path` __string__ (_required_)](#path-string-required)
+      * [`config` __object__ (_required_)](#config-object-required)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -51,6 +57,30 @@ import {write} from '@form8ion/config-file';
   });
 })();
 ```
+
+### API
+
+#### `write`
+
+Writes the provided config to the appropriate rc file for the named tool
+
+Takes a single options object as an argument, containing:
+
+##### `format` __string__ (_required_)
+
+Format of the file to be written
+
+##### `name` __string__ (_required_)
+
+Name of the tool that the config file is for
+
+##### `path` __string__ (_required_)
+
+Path to the directory that will contain the config file
+
+##### `config` __object__ (_required_)
+
+Configuration to be written to the file
 
 ## Contributing
 
