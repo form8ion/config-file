@@ -2,7 +2,7 @@
 import stubbedFs from 'mock-fs';
 /* eslint-disable-next-line no-unused-vars */
 import {fileTypes} from '@form8ion/core';
-import {write} from './lib/index.cjs';
+import {write} from './lib/index.js';
 
 // remark-usage-ignore-next
 stubbedFs({});
