@@ -72,6 +72,11 @@ When('the config file is loaded', async function () {
   this.parsedConfig = await load({name: this.configName});
 });
 
+When('the provided config is merged into the existing file', async function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
 Then('the config is defined in the file', async function () {
   const {desiredConfigFileFormat} = this;
   const fileContents = await fs.readFile(
@@ -85,4 +90,9 @@ Then('the config is defined in the file', async function () {
 
 Then('the config is parsed from the file', async function () {
   assert.deepEqual(this.parsedConfig, this.config);
+});
+
+Then('the {string} file will have the provided config merged into it', async function (string) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
 });
