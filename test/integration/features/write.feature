@@ -1,4 +1,4 @@
-Feature: config file
+Feature: write config
 
   Scenario: write json config
     Given the desired config file format is "json"

@@ -1,9 +1,9 @@
 import {resolve} from 'path';
 import {promises as fs} from 'fs';
-import {dump, load} from 'js-yaml';
+import {dump, load as loadYaml} from 'js-yaml';
 import {fileTypes} from '@form8ion/core';
 // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-import {write} from '@form8ion/config-file';
+import {write, load} from '@form8ion/config-file';
 
 import {After, Before, Given, Then, When} from '@cucumber/cucumber';
 import {assert} from 'chai';
@@ -20,7 +20,7 @@ const fileTypeExtensions = {
 
 function parseConfigFileContent(fileContents, format) {
   if (fileTypes.JSON === format) return JSON.parse(fileContents);
-  if (fileTypes.YAML === format) return load(fileContents);
+  if (fileTypes.YAML === format) return loadYaml(fileContents);
 
   throw new Error('desired file format is unsupported, so not parsing');
 }
@@ -68,6 +68,15 @@ When('the config file is written', async function () {
   });
 });
 
+When('the config file is loaded', async function () {
+  this.parsedConfig = await load({name: this.configName});
+});
+
+When('the provided config is merged into the existing file', async function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
 Then('the config is defined in the file', async function () {
   const {desiredConfigFileFormat} = this;
   const fileContents = await fs.readFile(
@@ -81,4 +90,9 @@ Then('the config is defined in the file', async function () {
 
 Then('the config is parsed from the file', async function () {
   assert.deepEqual(this.parsedConfig, this.config);
+});
+
+Then('the {string} file will have the provided config merged into it', async function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
 });
