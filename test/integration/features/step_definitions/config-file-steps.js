@@ -92,7 +92,7 @@ Then('the config is parsed from the file', async function () {
   assert.deepEqual(this.parsedConfig, this.config);
 });
 
-Then('the {string} file will have the provided config merged into it', async function (string) {
+Then('the {string} file will have the provided config merged into it', async function () {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
