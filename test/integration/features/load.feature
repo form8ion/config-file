@@ -9,3 +9,9 @@ Feature: load config
     Given a "yaml" config file exists
     When the config file is loaded
     Then the config is parsed from the file
+
+  @wip
+  Scenario: load common-js config
+    Given a "cjs" config file exists
+    When the config file is loaded
+    Then the config is parsed from the file
