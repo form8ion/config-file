@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import any from '@travi/any';
 import {assert} from 'chai';
 
-import loadConfig from './loader';
+import loadConfig from './loader.js';
 
 suite('config loader', () => {
   let sandbox;
