@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import {assert} from 'chai';
 import any from '@travi/any';
 
-import writeConfigFile from './write';
+import writeConfigFile from './write.js';
 
 suite('write config file', () => {
   let sandbox;

@@ -1,2 +1,2 @@
-export {default as write} from './write';
-export {default as load} from './loader';
+export {default as write} from './write.js';
+export {default as load} from './loader.js';
