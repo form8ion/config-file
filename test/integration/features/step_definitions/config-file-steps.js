@@ -16,7 +16,7 @@ const stubbedNodeModules = stubbedFs.load(resolve(...pathToNodeModules));
 const fileTypeExtensions = {
   [fileTypes.JSON]: 'json',
   [fileTypes.YAML]: 'yml',
-  cjs: 'cjs'
+  [fileTypes.COMMON_JS]: 'cjs'
 };
 
 function parseConfigFileContent(fileContents, format) {
@@ -29,7 +29,7 @@ function parseConfigFileContent(fileContents, format) {
 function serializeConfig(config, format) {
   if (fileTypes.JSON === format) return JSON.stringify(config);
   if (fileTypes.YAML === format) return dump(config);
-  if ('cjs' === format) {
+  if (fileTypes.COMMON_JS === format) {
     const cjsConfig = `module.exports = ${JSON.stringify(config)}`;
     // console.log({cjsConfig})
     return cjsConfig;

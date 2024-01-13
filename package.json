@@ -84,7 +84,7 @@
     "sinon": "17.0.1"
   },
   "dependencies": {
-    "@form8ion/core": "^1.7.0",
+    "@form8ion/core": "^4.2.0",
     "cosmiconfig": "^9.0.0"
   }
 }
