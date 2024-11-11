@@ -6,9 +6,9 @@ import {fileTypes} from '@form8ion/core';
 import {load, write} from '@form8ion/config-file';
 
 import {After, Before, Given, Then, When} from '@cucumber/cucumber';
-import {assert} from 'chai';
 import stubbedFs from 'mock-fs';
 import any from '@travi/any';
+import assert from 'node:assert';
 
 const pathToProjectRoot = [__dirname, '..', '..', '..', '..'];
 const pathToNodeModules = [...pathToProjectRoot, 'node_modules'];
