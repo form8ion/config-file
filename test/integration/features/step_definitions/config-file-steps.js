@@ -3,7 +3,7 @@ import {promises as fs} from 'fs';
 import {dump, load as loadYaml} from 'js-yaml';
 import {fileTypes} from '@form8ion/core';
 // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-import {write, load} from '@form8ion/config-file';
+import {load, write} from '@form8ion/config-file';
 
 import {After, Before, Given, Then, When} from '@cucumber/cucumber';
 import {assert} from 'chai';
@@ -29,11 +29,7 @@ function parseConfigFileContent(fileContents, format) {
 function serializeConfig(config, format) {
   if (fileTypes.JSON === format) return JSON.stringify(config);
   if (fileTypes.YAML === format) return dump(config);
-  if (fileTypes.COMMON_JS === format) {
-    const cjsConfig = `module.exports = ${JSON.stringify(config)}`;
-    // console.log({cjsConfig})
-    return cjsConfig;
-  }
+  if (fileTypes.COMMON_JS === format) return `module.exports = ${JSON.stringify(config)}`;
 
   throw new Error('desired file format is unsupported, so not serializing');
 }
