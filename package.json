@@ -2,27 +2,20 @@
   "name": "@form8ion/config-file",
   "description": "form8ion utility for managing RC files",
   "license": "MIT",
-  "type": "commonjs",
   "version": "0.0.0-semantically-released",
-  "files": [
-    "example.js",
-    "lib/"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
+  "type": "commonjs",
+  "author": "Matt Travi <npm@travi.org> (https://matt.travi.org)",
+  "repository": "form8ion/config-file",
+  "bugs": "https://github.com/form8ion/config-file/issues",
+  "homepage": "https://npm.im/@form8ion/config-file",
   "runkitExampleFilename": "./example.js",
-  "main": "./lib/index.js",
-  "module": "./lib/index.mjs",
   "exports": {
     "require": "./lib/index.js",
     "import": "./lib/index.mjs"
   },
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
   "sideEffects": false,
-  "repository": "form8ion/config-file",
-  "bugs": "https://github.com/form8ion/config-file/issues",
-  "homepage": "https://npm.im/@form8ion/config-file",
-  "author": "Matt Travi <npm@travi.org> (https://matt.travi.org)",
   "scripts": {
     "test": "npm-run-all --print-label build --parallel lint:* --parallel test:*",
     "build:js": "rollup --config",
@@ -52,11 +45,19 @@
     "test:integration:focus": "run-s 'test:integration:base -- --profile focus'",
     "lint:publish": "publint --strict"
   },
+  "files": [
+    "example.js",
+    "lib/"
+  ],
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
   "packageManager": "npm@10.9.0+sha512.65a9c38a8172948f617a53619762cd77e12b9950fe1f9239debcb8d62c652f2081824b986fee7c0af6c0a7df615becebe4bf56e17ec27214a87aa29d9e038b4b",
+  "dependencies": {
+    "@form8ion/core": "^4.2.0",
+    "cosmiconfig": "^9.0.0"
+  },
   "devDependencies": {
     "@babel/register": "7.25.9",
     "@cucumber/cucumber": "11.0.1",
@@ -89,9 +90,5 @@
     "rollup": "4.25.0",
     "rollup-plugin-auto-external": "2.0.0",
     "sinon": "19.0.2"
-  },
-  "dependencies": {
-    "@form8ion/core": "^4.2.0",
-    "cosmiconfig": "^9.0.0"
   }
 }
