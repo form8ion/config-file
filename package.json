@@ -52,6 +52,10 @@
     "test:integration:focus": "run-s 'test:integration:base -- --profile focus'",
     "lint:publish": "publint --strict"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "devDependencies": {
     "@babel/register": "7.25.9",
     "@cucumber/cucumber": "11.0.1",

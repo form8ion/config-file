@@ -6,6 +6,7 @@ form8ion utility for managing RC files
 
 [![Node CI Workflow Status][github-actions-ci-badge]][github-actions-ci-link]
 [![Codecov][coverage-badge]][coverage-link]
+![SLSA Level 2][slsa-badge]
 
 <!--status-badges end -->
 
@@ -146,3 +147,5 @@ $ npm test
 [runkit-link]: https://npm.runkit.com/@form8ion/config-file
 
 [runkit-badge]: https://badge.runkitcdn.com/@form8ion/config-file.svg
+
+[slsa-badge]: https://slsa.dev/images/gh-badge-level2.svg
