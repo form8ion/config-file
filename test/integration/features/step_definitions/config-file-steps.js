@@ -3,7 +3,7 @@ import {promises as fs} from 'fs';
 import {dump, load as loadYaml} from 'js-yaml';
 import {fileTypes} from '@form8ion/core';
 // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-import {load, write} from '@form8ion/config-file';
+import {load, write, exists} from '@form8ion/config-file';
 
 import {After, Before, Given, Then, When} from '@cucumber/cucumber';
 import stubbedFs from 'mock-fs';
@@ -87,6 +87,10 @@ When('the provided config is merged into the existing file', async function () {
   return 'pending';
 });
 
+When('checking for config existence', async function () {
+  this.configExists = await exists({name: this.configName});
+});
+
 Then('the config is defined in the file', async function () {
   const {desiredConfigFileFormat} = this;
   const fileContents = await fs.readFile(
@@ -112,4 +116,12 @@ Then('a missing-config error is thrown', async function () {
 
   assert.equal(message, 'No configuration found');
   assert.equal(code, 'ENOCONFIG');
+});
+
+Then('the config is reported to not be found', async function () {
+  assert.equal(this.configExists, false);
+});
+
+Then('the config is reported to be found', async function () {
+  assert.equal(this.configExists, true);
 });
