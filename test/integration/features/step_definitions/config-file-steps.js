@@ -61,6 +61,10 @@ Given('a {string} config file exists', async function (format) {
   );
 });
 
+Given('no config exists', async function () {
+  return undefined;
+});
+
 When('the config file is written', async function () {
   await write({
     format: this.desiredConfigFileFormat,
@@ -71,7 +75,11 @@ When('the config file is written', async function () {
 });
 
 When('the config file is loaded', async function () {
-  this.parsedConfig = await load({name: this.configName});
+  try {
+    this.parsedConfig = await load({name: this.configName});
+  } catch (err) {
+    this.configLoadError = err;
+  }
 });
 
 When('the provided config is merged into the existing file', async function () {
@@ -97,4 +105,11 @@ Then('the config is parsed from the file', async function () {
 Then('the {string} file will have the provided config merged into it', async function () {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
+});
+
+Then('a missing-config error is thrown', async function () {
+  const {message, code} = this.configLoadError;
+
+  assert.equal(message, 'No configuration found');
+  assert.equal(code, 'ENOCONFIG');
 });

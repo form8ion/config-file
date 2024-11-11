@@ -3,7 +3,9 @@ import {cosmiconfig} from 'cosmiconfig';
 export default async function ({name}) {
   const explorer = cosmiconfig(name);
 
-  const {config} = await explorer.search();
+  const searchResult = await explorer.search();
 
-  return config;
+  if (null === searchResult) throw Object.assign(new Error('No configuration found'), {code: 'ENOCONFIG'});
+
+  return searchResult.config;
 }

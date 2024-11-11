@@ -15,3 +15,8 @@ Feature: load config
     Given a "cjs" config file exists
     When the config file is loaded
     Then the config is parsed from the file
+
+  Scenario: no config exists
+    Given no config exists
+    When the config file is loaded
+    Then a missing-config error is thrown
