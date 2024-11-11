@@ -35,7 +35,7 @@
     "test:unit:base": "DEBUG=any mocha 'src/**/*-test.js'",
     "lint:lockfile": "lockfile-lint",
     "lint:js": "eslint . --cache",
-    "lint:js:fix": "run-s lint:js -- --fix",
+    "lint:js:fix": "run-s 'lint:js -- --fix'",
     "lint:md": "remark . --frail",
     "generate:md": "remark . --output",
     "pregenerate:md": "run-s build",
