@@ -9,6 +9,7 @@ import loadConfig from './loader.js';
 vi.mock('cosmiconfig');
 
 describe('config loader', () => {
+  const projectRoot = any.string();
   const name = any.word();
   const search = vi.fn();
 
@@ -18,14 +19,14 @@ describe('config loader', () => {
 
   it('should load the config from the existing file', async () => {
     const config = any.simpleObject();
-    search.mockResolvedValue({config});
+    when(search).calledWith(projectRoot).mockResolvedValue({config});
 
-    expect(await loadConfig({name})).toEqual(config);
+    expect(await loadConfig({name, projectRoot})).toEqual(config);
   });
 
   it('should throw an error if the config file does not exist', async () => {
-    search.mockResolvedValue(null);
+    when(search).calledWith(projectRoot).mockResolvedValue(null);
 
-    await expect(loadConfig({name})).rejects.toThrow('No configuration found');
+    await expect(loadConfig({name, projectRoot})).rejects.toThrow('No configuration found');
   });
 });

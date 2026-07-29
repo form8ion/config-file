@@ -20,3 +20,8 @@ Feature: load config
     Given no config exists
     When the config file is loaded
     Then a missing-config error is thrown
+
+  Scenario: load yaml config relative to a subdirectory
+    Given a "yaml" config file exists in a subdirectory
+    When the config file is loaded from the subdirectory
+    Then the config is parsed from the file

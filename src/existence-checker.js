@@ -1,8 +1,8 @@
 import loadConfig from './loader.js';
 
-export default async function ({name}) {
+export default async function exists({name, projectRoot}) {
   try {
-    await loadConfig({name});
+    await loadConfig({name, projectRoot});
 
     return true;
   } catch (e) {

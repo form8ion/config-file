@@ -61,6 +61,17 @@ Given('a {string} config file exists', async function (format) {
   );
 });
 
+Given('a {string} config file exists in a subdirectory', async function (format) {
+  this.configPath = `${process.cwd()}/subdirectory`;
+  this.desiredConfigFileFormat = format;
+
+  await fs.mkdir(this.configPath, {recursive: true});
+  await fs.writeFile(
+    `${this.configPath}/.${this.configName}rc.${fileTypeExtensions[format]}`,
+    serializeConfig(this.config, format)
+  );
+});
+
 Given('no config exists', async function () {
   return undefined;
 });
@@ -82,6 +93,14 @@ When('the config file is loaded', async function () {
   }
 });
 
+When('the config file is loaded from the subdirectory', async function () {
+  try {
+    this.parsedConfig = await load({name: this.configName, projectRoot: this.configPath});
+  } catch (err) {
+    this.configLoadError = err;
+  }
+});
+
 When('the provided config is merged into the existing file', async function () {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
@@ -89,6 +108,10 @@ When('the provided config is merged into the existing file', async function () {
 
 When('checking for config existence', async function () {
   this.configExists = await exists({name: this.configName});
+});
+
+When('checking for config existence in the subdirectory', async function () {
+  this.configExists = await exists({name: this.configName, projectRoot: this.configPath});
 });
 
 Then('the config is defined in the file', async function () {
